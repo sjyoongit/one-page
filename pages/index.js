@@ -22,8 +22,8 @@ export default function Home() {
         <Vision />
         <Sns />
         <Contact />
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 }
