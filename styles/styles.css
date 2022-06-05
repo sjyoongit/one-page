@@ -423,7 +423,7 @@ footer .copyright {
 
 @media screen and (max-width: 480px) {
   .visual .txt strong {
-    font-size: 20px;
+    font-size: 18px;
   }
   .about .about_wrap > ul > li svg {
     width: 150px;
