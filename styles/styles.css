@@ -392,7 +392,7 @@ footer .copyright {
     font-size: 36px;
   }
   .container {
-    width: 95%;
+    width: 95% !important;
   }
   .about .about_wrap > ul > li {
     text-align: center;
