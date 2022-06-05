@@ -18,8 +18,6 @@ const Visual = () => {
       <Image
         src="https://res.cloudinary.com/applotnwjd/image/upload/v1654236804/one_visual_xou98n.jpg"
         alt="메인비주얼 배경"
-        width={1920}
-        height={1080}
         layout="fill"
       />
     </div>

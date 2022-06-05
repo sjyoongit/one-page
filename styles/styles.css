@@ -15,9 +15,15 @@ header {
   transition: all 0.3s;
   padding: 1.5rem 0;
 }
+header.on {
+  background-color: #3d007d;
+}
 header.scrolled {
   background-color: #3d007d;
   padding: 0.5rem 0;
+}
+header .hd_logo > a > span {
+  margin: 4px 0 0 0 !important;
 }
 nav ul > li {
   display: inline-block;
@@ -28,6 +34,66 @@ nav ul > li > div a {
 }
 nav ul > li > div a:hover {
   text-decoration: underline;
+}
+/* hamburger */
+.menu-icon {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: none;
+}
+.menu-icon .menu-icon__cheeckbox {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
+  -webkit-touch-callout: none;
+  position: absolute;
+  opacity: 0;
+}
+.menu-icon div {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 22px;
+  height: 12px;
+}
+.menu-icon span {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 1px;
+  transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965);
+}
+.menu-icon span:first-of-type {
+  top: 0;
+}
+.menu-icon span:last-of-type {
+  bottom: 0;
+}
+.menu-icon.active span:first-of-type,
+.menu-icon .menu-icon__cheeckbox:checked + div span:first-of-type {
+  transform: rotate(45deg);
+  top: 5px;
+}
+.menu-icon.active span:last-of-type,
+.menu-icon .menu-icon__cheeckbox:checked + div span:last-of-type {
+  transform: rotate(-45deg);
+  bottom: 5px;
+}
+.menu-icon.active:hover span:first-of-type,
+.menu-icon.active:hover span:last-of-type,
+.menu-icon:hover .menu-icon__cheeckbox:checked + div span:first-of-type,
+.menu-icon:hover .menu-icon__cheeckbox:checked + div span:last-of-type {
+  width: 22px;
 }
 
 /* visual */
@@ -79,6 +145,7 @@ section .sec_desc {
   margin-top: 16px;
   margin-bottom: 30px;
   color: #6e6e6e;
+  word-break: keep-all;
 }
 
 /* about */
@@ -94,6 +161,8 @@ section .sec_desc {
   width: 22%;
 }
 .about .about_wrap > ul > li svg {
+  width: 190px;
+  height: 190px;
   margin: 0 auto;
 }
 .about .about_wrap > ul > li strong {
@@ -225,6 +294,9 @@ footer .law > ul > li {
   display: inline-block;
   margin-left: 20px;
 }
+footer .law > ul > li:first-of-type {
+  margin-left: 0;
+}
 footer .law > ul > li a {
   color: #a9a9a9;
 }
@@ -236,4 +308,134 @@ footer .law > ul > li a:hover {
 }
 footer .copyright {
   color: #a9a9a9;
+}
+
+@media screen and (max-width: 1536px) {
+  .visual .txt {
+    max-width: 760px;
+  }
+  .visual .txt strong {
+    font-size: 36px;
+  }
+  .contact .form_box {
+    max-width: 435px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+}
+
+@media screen and (max-width: 1024px) {
+  .menu-icon {
+    display: block;
+  }
+  nav {
+    width: 100%;
+    max-height: 0;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #3d007d;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in;
+  }
+  nav.on {
+    max-height: 500px;
+    transition: max-height 0.3s ease-in;
+    border-bottom: 1px solid #fff;
+  }
+  nav ul > li {
+    display: block;
+    margin-left: 0;
+  }
+  nav ul > li > div a {
+    display: block;
+    padding: 1rem 0;
+  }
+
+  .about .about_wrap > ul {
+    flex-wrap: wrap;
+  }
+  .about .about_wrap > ul > li {
+    width: 47%;
+    margin-bottom: 30px;
+  }
+  .sns .container {
+    background: url("https://res.cloudinary.com/applotnwjd/image/upload/v1654351428/one_sns2_m8hsfj.png")
+      no-repeat bottom 20px right/45%;
+  }
+  .contact .container {
+    background: none;
+  }
+  .contact .form_wrap {
+    justify-content: center;
+  }
+  .contact .form_box {
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .visual .txt {
+    max-width: 95%;
+  }
+  .visual .txt strong {
+    font-size: 28px;
+  }
+  .visual .txt strong br {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  section h2 {
+    font-size: 36px;
+  }
+  .container {
+    width: 95%;
+  }
+  .about .about_wrap > ul > li {
+    text-align: center;
+  }
+  .about .about_wrap > ul > li strong {
+    font-size: 18px;
+  }
+  .vision .container > ul {
+    flex-direction: column;
+  }
+  .vision .container > ul > li {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  footer .wrap {
+    flex-direction: column;
+  }
+  footer .copyright {
+    margin-bottom: 10px;
+  }
+  footer .law > ul > li {
+    margin-left: 15px;
+  }
+  footer .law > ul > li a {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .visual .txt strong {
+    font-size: 20px;
+  }
+  .about .about_wrap > ul > li svg {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-icon:hover span:first-of-type {
+    width: 26px;
+  }
+  .menu-icon:hover span:last-of-type {
+    width: 12px;
+  }
 }
