@@ -67,7 +67,7 @@ const About = () => {
               </svg>
               <strong>DESIGN THE FUTURE</strong>
               <p>
-                최첨단 AI 연구와 AI 원천기술 확보를 통해 CJ의 미래 성장동력을
+                최첨단 AI 연구와 AI 원천기술 확보를 통해 ONE의 미래 성장동력을
                 확보합니다.
               </p>
             </li>
