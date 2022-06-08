@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import baseApiUrl from "../utils/baseApiUrl";
+import { useForm } from "react-hook-form";
 
 const Contact = () => {
   const router = useRouter();
@@ -8,43 +9,32 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [content, setContent] = useState("");
   const [file, setFile] = useState(false);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      name,
-      email,
-      content,
-    };
 
-    fetch(`${baseApiUrl}/api/contacts`, {
-      method: "POST",
-      headers: {
-        //"Content-Type": "multipart/form-data",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        data: {
-          name: `${data.name}`,
-          email: `${data.email}`,
-          content: `${data.content}`,
-        },
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
-
-    fetch("/api/contact", {
-      method: "post",
-      body: JSON.stringify(data),
-    }).then((res) => {
-      if (res.status === 200) {
-        alert("접수되었습니다.");
+  // addProduct는 원래 다른 파일에 분리되어 있던 코드이다.
+  const addProduct = async (values) => {
+    const formData = new FormData();
+    const { images, ...rest } = values;
+    formData.append("files.images", images[0]);
+    formData.append("data", JSON.stringify(rest));
+    const { data } = await axios.post(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/products`,
+      formData,
+      { headers: { "content-type": "multipart/form-data" } }
+    );
+    return data;
+  };
+  const onSubmit = async (values) => {
+    try {
+      const data = await addProduct(values);
+      if (data) alert("제품 등록 성공");
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        const errorMessage = error.response.data.error.message;
+        alert(`제품 등록 실패 \n ${errorMessage}`);
       } else {
-        alert("접수를 실패하였습니다.");
+        alert("등록 도중에 오류 발생");
       }
-    });
+    }
   };
   return (
     <section id="contact" className="contact">
@@ -55,7 +45,7 @@ const Contact = () => {
         </p>
         <div className="form_wrap">
           <div className="form_box">
-            <form name="contact-form" onSubmit={handleSubmit}>
+            <form name="contact-form" onSubmit={handleSubmit(onSubmit)}>
               <ul>
                 <li>
                   <label htmlFor="name">이름</label>
@@ -64,7 +54,7 @@ const Contact = () => {
                     name="name"
                     required
                     type="text"
-                    onChange={(e) => setName(e.target.value)}
+                    {...register("name")}
                   />
                 </li>
                 <li>
@@ -74,7 +64,7 @@ const Contact = () => {
                     name="email"
                     required
                     type="email"
-                    onChange={(e) => setEmail(e.target.value)}
+                    {...register("email")}
                   />
                 </li>
                 <li>
@@ -82,7 +72,7 @@ const Contact = () => {
                   <textarea
                     id="content"
                     name="content"
-                    onChange={(e) => setContent(e.target.value)}
+                    {...register("content")}
                   ></textarea>
                 </li>
                 <li>
@@ -91,7 +81,7 @@ const Contact = () => {
                     id="file"
                     name="file"
                     type="file"
-                    onChange={(e) => setFile(e.target.files[0])}
+                    {...register("file")}
                   ></input>
                 </li>
               </ul>

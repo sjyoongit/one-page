@@ -4,7 +4,7 @@ import Visual from "../components/Visual";
 import About from "../components/About";
 import Vision from "../components/Vision";
 import Sns from "../components/Sns";
-import Contact from "../components/Contact";
+import Contact from "../components/ContactFormEx";
 import Footer from "../components/Footer";
 
 export default function Home() {
