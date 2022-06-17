@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createMarkup, tranformInterchanges, showBotTyping, getBotAnswer, fetchQuery } from '../utils/helper'
 
-export default function Home( { interchanges }) {
+export default function ChatBot( { interchanges }) {
   const [userQuestion, setUserQuestion] = useState('')
   const [allow, setAllow] = useState(false)
   const [interchange, setInterchange] = useState([])
