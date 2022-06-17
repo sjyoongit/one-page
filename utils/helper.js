@@ -1,4 +1,4 @@
-const baseUrl = '3.36.58.66:1337' || '3.36.58.66:1337'
+const baseUrl = '3.36.58.66:1337'
     export const createMarkup = (text) => {
       return {__html: text};
     }
