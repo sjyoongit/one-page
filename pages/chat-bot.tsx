@@ -79,11 +79,20 @@ const handleSubmit = async (e) => {
   )
 }
 
-export async function getStaticProps() {
-  const interchanges = await fetchQuery('api/interchanges')
-  return {
-    props: {
-      interchanges
+export async function getServerSideProps() {
+    const interchanges = await fetchQuery('api/interchanges')
+    return {
+      props: {
+        interchanges
+      }
     }
   }
-}
+
+// export async function getStaticProps() {
+//   const interchanges = await fetchQuery('api/interchanges')
+//   return {
+//     props: {
+//       interchanges
+//     }
+//   }
+// }
