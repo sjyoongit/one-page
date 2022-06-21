@@ -282,6 +282,61 @@ section .sec_desc {
   background-color: #4e0a97;
 }
 
+.chat_float {
+  width: 340px;
+  position: fixed;
+  right: 35px;
+  bottom: 120px;
+  background-color: #fff;
+  box-shadow: 0px 0px 19px 5px #3f3f3f52;
+  z-index: 999;
+  border-radius: 1rem;
+}
+.chat_float.off {
+  display: none;
+}
+.chat_float.on {
+  display: block;
+}
+.chat_float .bot_tit {
+  color: #fff;
+}
+.chat_float .bot span {
+  background-color: #f4f4f4;
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+.chat_float .user span:last-of-type {
+  background-color: #faf5ff;
+}
+.chat_float .send_box {
+  background-color: #e1e1e1;
+}
+.chat_float .input_box {
+  background-color: #e1e1e1;
+}
+.chat_float .input_box input {
+  background-color: #e1e1e1;
+}
+.chat_float .txt_input {
+  width: calc(100% - 40px);
+}
+.chat_float .send_txt svg {
+  color: #464646;
+}
+
+.float_btn {
+  position: fixed;
+  right: 35px;
+  bottom: 35px;
+  background-color: #5a1b9e;
+  z-index: 888;
+}
+.float_btn:hover {
+  background-color: #7630c1;
+}
+
 /* footer */
 footer {
   padding: 100px 0 50px;

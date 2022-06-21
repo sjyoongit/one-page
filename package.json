@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@heroicons/react": "^1.0.6",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.4",
     "@sendgrid/mail": "^7.7.0",
     "bootstrap": "^5.0.2",
     "formik": "^2.2.9",
