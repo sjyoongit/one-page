@@ -6,6 +6,7 @@ import {
   getBotAnswer,
 } from "../utils/helper";
 
+//https://strapi.io/blog/how-to-create-a-chat-bot-assistant-using-next-js-tailwind-css-and-strapi?utm_source=dev.to&utm_medium=post&utm_campaign=blog
 const ChatBot = ({ interchanges }) => {
   const [userQuestion, setUserQuestion] = useState("");
   const [allow, setAllow] = useState(false);
@@ -22,7 +23,6 @@ const ChatBot = ({ interchanges }) => {
       ]);
     };
     interChangesAsync();
-    //console.log("!!!!!!!",interchange);
   }, [interchanges]);
 
   const handleSubmit = async (e) => {

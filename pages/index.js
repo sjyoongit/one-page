@@ -13,7 +13,6 @@ import Fab from "@mui/material/Fab";
 
 export default function Home({ interchanges }) {
   const [floatToggle, setFloatToggle] = useState(false);
-  console.log("Toggle: ", floatToggle);
   return (
     <>
       <Head>

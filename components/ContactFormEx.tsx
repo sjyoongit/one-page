@@ -4,6 +4,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import baseApiUrl from "../utils/baseApiUrl";
 
+//입력받을 데이터
 interface AddProductValues {
   name: string;
   email: string;
@@ -13,29 +14,8 @@ interface AddProductValues {
 
 const AddProduct: NextPage = () => {
   const { register, handleSubmit } = useForm<AddProductValues>();
-  const [addedId, setAddedId] = useState(0);
 
-  /*useEffect(() => {
-    fetch(`${baseApiUrl}/api/contacts/${addedId}?populate=*`, {
-      method: "get",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        //console.log("여기:", data);
-        fetch("/api/contact", {
-          method: "post",
-          body: JSON.stringify(data),
-        }).then((res) => {
-          if (res.status === 200) {
-            alert("접수되었습니다.");
-          } else {
-            alert("접수를 실패하였습니다.");
-          }
-        });
-      });
-  }, [addedId]);*/
-
-  // addProduct는 원래 다른 파일에 분리되어 있던 코드이다.
+  //문의하기 폼데이터 strapi에 저장
   const addProduct = async (values: AddProductValues) => {
     const formData = new FormData();
     const { file, ...rest } = values;
@@ -52,12 +32,12 @@ const AddProduct: NextPage = () => {
   const onSubmit = async (values: AddProductValues) => {
     try {
       const data = await addProduct(values).then((data) => {
+        //strapi에 저장된 데이터 불러와서 sendgrid api로 전송
         fetch(`${baseApiUrl}/api/contacts/${data.data.id}?populate=*`, {
           method: "get",
         })
           .then((res) => res.json())
           .then((data) => {
-            //console.log("여기:", data);
             fetch("/api/contact", {
               method: "post",
               body: JSON.stringify(data),
@@ -70,16 +50,12 @@ const AddProduct: NextPage = () => {
             });
           });
       });
-      //console.log("메일링 데이터: ", data);
-      //console.log("아이디:", addedId);
-
-      //if (data) alert("제품 등록 성공");
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         const errorMessage = (error.response.data as { error: Error }).error;
-        alert(`문의하기 실패 \n ${errorMessage}`);
+        alert(`문의하기를 실패햐였습니다. \n ${errorMessage}`);
       } else {
-        alert("문의하기 도중에 오류 발생");
+        alert("문의하기 도중에 오류가 발생했습니다.");
       }
     }
   };
