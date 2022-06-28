@@ -18,6 +18,7 @@ export default function Home({ interchanges }) {
       <Head>
         <title>One Page</title>
         <meta name="description" content="One Page Example" />
+        {/* meta data */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
@@ -49,8 +50,8 @@ export default function Home({ interchanges }) {
           </svg>
         </Fab>
         <FloatingChat interchanges={interchanges} float={floatToggle} />
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 }

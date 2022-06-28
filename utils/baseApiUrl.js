@@ -1,6 +1,6 @@
 const baseApiUrl =
   process.env.NODE_ENV === "production"
-    ? "https://rocky-hollows-66550.herokuapp.com"
-    : "https://rocky-hollows-66550.herokuapp.com";
+    ? "http://3.36.58.66:1337"
+    : "http://3.36.58.66:1337";
 
 export default baseApiUrl;
